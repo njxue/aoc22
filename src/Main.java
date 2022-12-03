@@ -1,7 +1,11 @@
-import Day1.Day1;
+import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Day1.solve2());
+        try {
+            System.out.println(Day2.Part2.solve());
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("File not found");
+        }
     }
 }
