@@ -27,6 +27,7 @@ public class Part1 {
             for (int i = 0; i < quantity; i++) {
                 toStack.push(fromStack.pop());
             }
+            sc.close();
         }
 
         StringBuilder sb = new StringBuilder();

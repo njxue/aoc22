@@ -34,6 +34,7 @@ public class Part2 {
             for (int j = 0; j < quantity; j++) {
                 toStack.push(intermediateStack.pop());
             }
+            sc.close();
         }
 
         StringBuilder sb = new StringBuilder();
