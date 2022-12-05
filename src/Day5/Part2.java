@@ -13,7 +13,7 @@ public class Part2 {
         HashMap<Integer, Stack<Character>> map = generateStacks();
         File file = new File("src/Day5/actionsInput");
         Scanner sc = new Scanner(file);
-
+        Stack<Character> intermediateStack = new Stack<>();
         // move crates
         while (sc.hasNextLine()) {
             if (!sc.hasNext()) { // eof line
@@ -25,7 +25,7 @@ public class Part2 {
             Stack<Character> fromStack = map.get(sc.nextInt());
             sc.next(); // "to"
             Stack<Character> toStack = map.get(sc.nextInt());
-            Stack<Character> intermediateStack = new Stack<>();
+
 
             for (int i = 0; i < quantity; i++) {
                 intermediateStack.push(fromStack.pop());
@@ -34,8 +34,9 @@ public class Part2 {
             for (int j = 0; j < quantity; j++) {
                 toStack.push(intermediateStack.pop());
             }
-            sc.close();
         }
+
+        sc.close();
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < map.size(); i++) {
