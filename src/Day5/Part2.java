@@ -44,5 +44,4 @@ public class Part2 {
         }
         return sb.toString();
     }
-
 }
