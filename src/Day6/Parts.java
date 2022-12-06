@@ -9,6 +9,8 @@ public class Parts {
     public static int solve() throws FileNotFoundException {
         Scanner sc = new Scanner(new File("src/Day6/input"));
         String str = sc.nextLine();
+        sc.close();
+
         int i = 0;
         int markerLength = 14;
         boolean done = false;
@@ -26,6 +28,7 @@ public class Parts {
                 seen.put(c, j);
             }
         }
+
         return i + markerLength;
     }
 }
