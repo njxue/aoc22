@@ -15,10 +15,20 @@ public class Part1 {
     private static final int MAX_SIZE = 100000;
 
     public static int solve() throws FileNotFoundException {
+        int totalSize = 0;
+        HashMap<String, Integer> dirSize = calculateSizes();
+        for (Integer size : dirSize.values()) {
+            if (size <= MAX_SIZE) {
+                totalSize += size;
+            }
+        }
+        return totalSize;
+    }
+
+    static HashMap<String, Integer> calculateSizes() throws FileNotFoundException {
         HashMap<String, Integer> dirSize = new HashMap<>();
         Stack<String> dirStack = new Stack<>();
         Scanner sc = new Scanner(new File("src/Day7/input"));
-        int totalSize = 0;
         while (sc.hasNextLine()) {
             String str = sc.nextLine();
             if (isInput(str)) {
@@ -33,13 +43,8 @@ public class Part1 {
                 }
             }
         }
-
-        for (Integer size : dirSize.values()) {
-            if (size <= MAX_SIZE) {
-                totalSize += size;
-            }
-        }
-        return totalSize;
+        sc.close();
+        return dirSize;
     }
 
     static boolean isInput(String str) {
