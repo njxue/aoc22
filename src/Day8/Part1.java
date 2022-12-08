@@ -31,6 +31,7 @@ public class Part1 {
             }
             grid.add(row);
         }
+        sc.close();
         return grid;
     }
 
