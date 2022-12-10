@@ -10,10 +10,12 @@ import java.util.Scanner;
 
 public class Part2 {
     private static final int WIDTH = 40;
+    private static final String PIXEL_LIT = "#";
+    private static final String PIXEL_DARK = ".";
 
     public static String solve() throws FileNotFoundException {
         StringBuilder wholeImage = new StringBuilder();
-        StringBuilder row = new StringBuilder("#");
+        StringBuilder row = new StringBuilder(PIXEL_LIT);
         Scanner sc = new Scanner(new File("src/Day10/input"));
         int pixelPos = 0; // initial pixel position
         int x = 1; // initial sprite position
@@ -45,9 +47,9 @@ public class Part2 {
 
     private static void updateRow(StringBuilder row, int spritePos, int pixelPos) {
         if (hasOverlap(spritePos, pixelPos)) {
-            row.append("#");
+            row.append(PIXEL_LIT);
         } else {
-            row.append(".");
+            row.append(PIXEL_DARK);
         }
     }
 
