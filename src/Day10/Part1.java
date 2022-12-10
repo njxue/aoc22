@@ -41,6 +41,7 @@ public class Part1 {
                 }
             }
         }
+        sc.close();
         return strengthSum;
     }
 

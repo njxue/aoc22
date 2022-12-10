@@ -42,6 +42,7 @@ public class Part2 {
             }
         }
 
+        sc.close();
         return wholeImage.toString();
     }
 
