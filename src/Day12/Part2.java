@@ -49,7 +49,6 @@ public class Part2 {
         Scanner sc = new Scanner(new File("src/Day12/input"));
         List<List<Node>> grid = new ArrayList<>();
         Node src = null;
-        Node dest = null;
         int r = 0;
         while (sc.hasNextLine()) {
             List<Node> row = new ArrayList<>();
