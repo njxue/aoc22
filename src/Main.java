@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
         try {
-            System.out.println(Day10.Part2.solve());
+            System.out.println(Day12.Part2.solve());
         } catch (Exception e) {
-            System.out.println("error");
+            System.out.println(e);
         }
     }
 }
