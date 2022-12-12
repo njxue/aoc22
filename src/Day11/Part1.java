@@ -137,7 +137,7 @@ public class Part1 {
 
     private static long parseSecondOperand(long first, String second) {
         if (second.equals("old")) {
-            return 1;
+            return first;
         }
         return Long.parseLong(second);
     }
