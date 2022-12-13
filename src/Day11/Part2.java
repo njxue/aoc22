@@ -14,10 +14,11 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Part2 {
+    private static long lcm = 1;
+
     private static class Monkey {
 
         private long itemsInspected = 0;
-        private long testFactor;
 
         Consumer<Long> trueAction;
         Consumer<Long> falseAction;
@@ -34,12 +35,7 @@ public class Part2 {
             while (!items.isEmpty()) {
                 itemsInspected++;
                 long i = items.poll();
-                long newWorry = op.apply(i);
-
-                 if (newWorry <= 0) {
-                    System.out.println(newWorry);
-                 }
-
+                long newWorry = op.apply(i) % lcm;
                 if (test(newWorry)) {
                     trueAction.accept(newWorry);
                 } else {
@@ -50,10 +46,6 @@ public class Part2 {
 
         boolean test(long worryLevel) {
             return pred.test(worryLevel);
-        }
-
-        void setTestFactor(long factor) {
-            testFactor = factor;
         }
 
         void setTrueAction(Consumer<Long> f) {
@@ -86,7 +78,7 @@ public class Part2 {
 
     public static long solve() throws FileNotFoundException {
         Scanner sc = new Scanner(new File("src/Day11/input"));
-        int numRounds = 20;
+        int numRounds = 10000;
 
         // initialise monkeys
         while (sc.hasNextLine()) {
@@ -109,15 +101,6 @@ public class Part2 {
         // start throwing
         for (int i = 0; i < numRounds; i++) {
             runRound();
-
-            if (i == 0 || i == 19 || (i + 1) % 1000 == 0) {
-                System.out.println("===========================");
-                System.out.printf("ROUND %d%n", i + 1);
-                for (Monkey m : monkeys) {
-                    System.out.println(m.itemsInspected);
-                }
-            }
-
         }
 
         // monkey business
@@ -156,7 +139,7 @@ public class Part2 {
 
     private static long parseSecondOperand(long first, String second) {
         if (second.equals("old")) {
-            return 1;
+            return first;
         }
         return Long.parseLong(second);
     }
@@ -164,6 +147,7 @@ public class Part2 {
     private static Predicate<Long> parsePred(String pred) {
         String[] arr = pred.split(" ");
         long i = Long.parseLong(arr[arr.length - 1]);
+        lcm *= i;
         return j -> j % i == 0;
     }
 
