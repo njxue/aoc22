@@ -21,7 +21,6 @@ public class Part1 {
             }
             if (compare(first, second) < 0) {
                 res += index;
-                System.out.println(index);
             }
             index++;
         }
