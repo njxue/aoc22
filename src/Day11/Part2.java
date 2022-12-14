@@ -27,11 +27,11 @@ public class Part2 {
 
         Queue<Long> items = new LinkedList<>();
 
-        void addItem(long i) {
+        void yoink(long i) {
             items.add(i);
         }
 
-        void throwItems() {
+        void yeet() {
             while (!items.isEmpty()) {
                 itemsInspected++;
                 long i = items.poll();
@@ -90,7 +90,7 @@ public class Part2 {
             monkeys.add(m);
             List<Long> items = parseItems(sc.nextLine());
             for (long item : items) {
-                m.addItem(item);
+                m.yoink(item);
             }
             m.setOperation(parseOperation(sc.nextLine()));
             m.setPred(parsePred(sc.nextLine()));
@@ -110,7 +110,7 @@ public class Part2 {
 
     private static void runRound() {
         for (Monkey m : monkeys) {
-            m.throwItems();
+            m.yeet();
         }
     }
 
@@ -154,6 +154,6 @@ public class Part2 {
     private static Consumer<Long> parseAction(String action) {
         String[] arr = action.split(" ");
         int i = Integer.parseInt(arr[arr.length - 1]);
-        return item -> monkeys.get(i).addItem(item);
+        return item -> monkeys.get(i).yoink(item);
     }
 }
